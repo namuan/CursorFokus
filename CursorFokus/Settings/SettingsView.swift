@@ -2,10 +2,15 @@ import SwiftUI
 
 struct SettingsView: View {
     @State private var store = SettingsStore.shared
+    @State private var selectedPreset: String = ""
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
+                presetPicker
+
+                Divider()
+
                 HighlightSection(
                     title: "Cursor Highlight",
                     enabled: $store.cursorEnabled,
@@ -47,6 +52,27 @@ struct SettingsView: View {
             .padding()
         }
         .frame(minWidth: 400)
+    }
+
+    private var presetPicker: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Preset")
+                .font(.headline)
+
+            Picker("Preset", selection: $selectedPreset) {
+                Text("Custom").tag("")
+                ForEach(HighlightPreset.presets) { preset in
+                    Text(preset.name).tag(preset.id)
+                }
+            }
+            .pickerStyle(.menu)
+            .onChange(of: selectedPreset) { _, newValue in
+                guard let preset = HighlightPreset.presets.first(where: { $0.id == newValue }) else {
+                    return
+                }
+                store.applyPreset(preset)
+            }
+        }
     }
 }
 

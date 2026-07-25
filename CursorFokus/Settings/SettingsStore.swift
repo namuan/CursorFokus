@@ -112,5 +112,22 @@ final class SettingsStore {
         set { defaults.set(newValue, forKey: SettingsKeys.rightClickOpacity) }
     }
 
+    func applyPreset(_ preset: HighlightPreset) {
+        cursorEnabled = preset.cursorEnabled
+        cursorHexColor = preset.cursorHexColor
+        cursorSize = preset.cursorSize
+        cursorOpacity = preset.cursorOpacity
+
+        leftClickEnabled = preset.leftClickEnabled
+        leftClickHexColor = preset.leftClickHexColor
+        leftClickSize = preset.leftClickSize
+        leftClickOpacity = preset.leftClickOpacity
+
+        rightClickEnabled = preset.rightClickEnabled
+        rightClickHexColor = preset.rightClickHexColor
+        rightClickSize = preset.rightClickSize
+        rightClickOpacity = preset.rightClickOpacity
+    }
+
     private init() {}
 }
