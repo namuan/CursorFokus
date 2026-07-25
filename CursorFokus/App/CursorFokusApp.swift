@@ -1,8 +1,8 @@
 import AppKit
 
-// swiftlint:disable:next unused_declaration
 @main
 enum CursorFokusApp {
+    // swiftlint:disable:next unused_declaration
     static func main() {
         let app = NSApplication.shared
         let delegate = AppDelegate()

@@ -8,7 +8,6 @@ struct OverlayWindowManagerTests {
     func managerInitializesWithoutError() {
         let manager = OverlayWindowManager()
         manager.setup()
-        #expect(true)
         manager.teardown()
     }
 
@@ -17,7 +16,6 @@ struct OverlayWindowManagerTests {
         let manager = OverlayWindowManager()
         manager.setup()
         manager.teardown()
-        #expect(true)
     }
 
     @Test
@@ -25,6 +23,5 @@ struct OverlayWindowManagerTests {
         let manager = OverlayWindowManager()
         manager.teardown()
         manager.teardown()
-        #expect(true)
     }
 }
