@@ -1,5 +1,6 @@
 import AppKit
 
+// swiftlint:disable:next unused_declaration
 @main
 enum CursorFokusApp {
     static func main() {

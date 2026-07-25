@@ -1,5 +1,3 @@
-import Foundation
-
 struct HighlightPreset: Identifiable, Hashable {
     let id: String
     let name: String
