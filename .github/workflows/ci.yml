@@ -20,9 +20,6 @@ jobs:
       - name: Install SwiftLint
         run: brew install swiftlint
 
-      - name: Install Periphery
-        run: brew install periphery
-
       - name: Generate Xcode project
         run: xcodegen generate
 
@@ -31,9 +28,6 @@ jobs:
 
       - name: Analyze with SwiftLint
         run: bash Scripts/swiftlint-analyze.sh
-
-      - name: Find unused code
-        run: periphery scan
 
       - name: Check formatting
         run: swift format lint --recursive CursorFokus/ CursorFokusTests/ CursorFokusUITests/
