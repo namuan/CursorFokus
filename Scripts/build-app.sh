@@ -31,6 +31,8 @@ cat > "$APP_BUNDLE/Contents/Info.plist" <<EOF
     <string>$APP_NAME</string>
     <key>CFBundleExecutable</key>
     <string>$APP_NAME</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
     <key>CFBundleIdentifier</key>
     <string>$BUNDLE_ID</string>
     <key>CFBundleInfoDictionaryVersion</key>
