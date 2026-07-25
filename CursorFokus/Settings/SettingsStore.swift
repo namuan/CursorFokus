@@ -26,7 +26,7 @@ enum SettingsKeys {
 final class SettingsStore {
     static let shared = SettingsStore()
 
-    private let defaults = UserDefaults.standard
+    private let defaults: UserDefaults
 
     // MARK: - Cursor highlight
 
@@ -129,5 +129,7 @@ final class SettingsStore {
         rightClickOpacity = preset.rightClickOpacity
     }
 
-    private init() {}
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+    }
 }
