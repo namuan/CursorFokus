@@ -66,11 +66,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         settingsItem.target = self
         menu.addItem(settingsItem)
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(
-            title: "Quit",
-            action: #selector(NSApplication.terminate(_:)),
-            keyEquivalent: ""
-        ))
+        menu.addItem(
+            NSMenuItem(
+                title: "Quit",
+                action: #selector(NSApplication.terminate(_:)),
+                keyEquivalent: ""
+            )
+        )
 
         statusItem?.menu = menu
     }

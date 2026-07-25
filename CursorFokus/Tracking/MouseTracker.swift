@@ -24,14 +24,17 @@ final class MouseTracker {
         }
 
         // Monitor mouse clicks globally (requires Accessibility permission)
-        globalMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
-            guard let self else { return }
-            MainActor.assumeIsolated {
-                let location = NSEvent.mouseLocation
-                let isRightClick = event.type == .rightMouseDown
-                self.onMouseClick?(location, isRightClick)
+        globalMonitor = NSEvent.addGlobalMonitorForEvents(
+            matching: [.leftMouseDown, .rightMouseDown],
+            handler: { [weak self] event in
+                guard let self else { return }
+                MainActor.assumeIsolated {
+                    let location = NSEvent.mouseLocation
+                    let isRightClick = event.type == .rightMouseDown
+                    self.onMouseClick?(location, isRightClick)
+                }
             }
-        }
+        )
     }
 
     func stop() {

@@ -11,7 +11,7 @@ let package = Package(
         .executableTarget(
             name: "CursorFokus",
             path: "CursorFokus",
-            resources: [.process("Resources")]
-        )
+            resources: [.process("Resources")],
+        ),
     ]
 )

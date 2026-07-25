@@ -8,29 +8,32 @@ extension NSColor {
         var int: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&int)
 
-        let r, g, b, a: CGFloat
+        let redValue: CGFloat
+        let greenValue: CGFloat
+        let blueValue: CGFloat
+        let alphaValue: CGFloat
         if hex.count == 8 {
-            r = CGFloat((int >> 24) & 0xFF) / 255
-            g = CGFloat((int >> 16) & 0xFF) / 255
-            b = CGFloat((int >> 8) & 0xFF) / 255
-            a = CGFloat(int & 0xFF) / 255
+            redValue = CGFloat((int >> 24) & 0xFF) / 255
+            greenValue = CGFloat((int >> 16) & 0xFF) / 255
+            blueValue = CGFloat((int >> 8) & 0xFF) / 255
+            alphaValue = CGFloat(int & 0xFF) / 255
         } else {
-            r = CGFloat((int >> 16) & 0xFF) / 255
-            g = CGFloat((int >> 8) & 0xFF) / 255
-            b = CGFloat(int & 0xFF) / 255
-            a = 1.0
+            redValue = CGFloat((int >> 16) & 0xFF) / 255
+            greenValue = CGFloat((int >> 8) & 0xFF) / 255
+            blueValue = CGFloat(int & 0xFF) / 255
+            alphaValue = 1.0
         }
-        self.init(red: r, green: g, blue: b, alpha: a)
+        self.init(red: redValue, green: greenValue, blue: blueValue, alpha: alphaValue)
     }
 
     var hexString: String {
         guard let rgb = usingColorSpace(.deviceRGB) ?? usingColorSpace(.sRGB) else {
             return "#FF0000FF"
         }
-        let r = Int(clamping: Int(rgb.redComponent * 255))
-        let g = Int(clamping: Int(rgb.greenComponent * 255))
-        let b = Int(clamping: Int(rgb.blueComponent * 255))
-        let a = Int(clamping: Int(rgb.alphaComponent * 255))
-        return String(format: "#%02X%02X%02X%02X", r, g, b, a)
+        let redVal = Int(clamping: Int(rgb.redComponent * 255))
+        let greenVal = Int(clamping: Int(rgb.greenComponent * 255))
+        let blueVal = Int(clamping: Int(rgb.blueComponent * 255))
+        let alphaVal = Int(clamping: Int(rgb.alphaComponent * 255))
+        return String(format: "#%02X%02X%02X%02X", redVal, greenVal, blueVal, alphaVal)
     }
 }

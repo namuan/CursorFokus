@@ -20,11 +20,13 @@ enum CursorFokusApp {
         // App menu
         let appMenuItem = NSMenuItem()
         let appMenu = NSMenu(title: "CursorFokus")
-        appMenu.addItem(NSMenuItem(
-            title: "About CursorFokus",
-            action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)),
-            keyEquivalent: ""
-        ))
+        appMenu.addItem(
+            NSMenuItem(
+                title: "About CursorFokus",
+                action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)),
+                keyEquivalent: ""
+            )
+        )
         appMenu.addItem(NSMenuItem.separator())
         let settingsItem = NSMenuItem(
             title: "Settings...",
@@ -34,11 +36,13 @@ enum CursorFokusApp {
         settingsItem.target = delegate
         appMenu.addItem(settingsItem)
         appMenu.addItem(NSMenuItem.separator())
-        appMenu.addItem(NSMenuItem(
-            title: "Quit CursorFokus",
-            action: #selector(NSApplication.terminate(_:)),
-            keyEquivalent: "q"
-        ))
+        appMenu.addItem(
+            NSMenuItem(
+                title: "Quit CursorFokus",
+                action: #selector(NSApplication.terminate(_:)),
+                keyEquivalent: "q"
+            )
+        )
         appMenuItem.submenu = appMenu
         mainMenu.addItem(appMenuItem)
 

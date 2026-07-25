@@ -32,8 +32,12 @@ final class OverlayView: NSView {
 
     func showClickRipple(at globalPoint: NSPoint, isRightClick: Bool) {
         let settings = SettingsStore.shared
-        let (enabled, hexColor, size, opacity) = isRightClick
-            ? (settings.rightClickEnabled, settings.rightClickHexColor, settings.rightClickSize, settings.rightClickOpacity)
+        let (enabled, hexColor, size, opacity) =
+            isRightClick
+            ? (
+                settings.rightClickEnabled, settings.rightClickHexColor, settings.rightClickSize,
+                settings.rightClickOpacity
+            )
             : (settings.leftClickEnabled, settings.leftClickHexColor, settings.leftClickSize, settings.leftClickOpacity)
 
         guard enabled else { return }
@@ -44,6 +48,10 @@ final class OverlayView: NSView {
         )
 
         let color = NSColor(hex: hexColor) ?? .systemGreen
+        animateRipple(at: localPoint, size: size, color: color, opacity: opacity)
+    }
+
+    private func animateRipple(at localPoint: NSPoint, size: CGFloat, color: NSColor, opacity: CGFloat) {
         let initialSize: CGFloat = size / 3
         let finalSize: CGFloat = size * 2.5
         let lineWidth: CGFloat = max(2, size / 10)

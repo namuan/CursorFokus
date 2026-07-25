@@ -9,9 +9,12 @@ final class OverlayWindowManager {
         observeScreenChanges()
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     func teardown() {
         removeOverlays()
-        NotificationCenter.default.removeObserver(self)
     }
 
     func updateCursorPosition(_ globalPoint: NSPoint) {
