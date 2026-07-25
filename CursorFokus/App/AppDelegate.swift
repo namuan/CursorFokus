@@ -42,6 +42,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func openSettings() {
         print("CursorFokus: openSettings() called — showing settings window.")
+        NSApplication.shared.activate(ignoringOtherApps: true)
         if settingsWindowController == nil {
             settingsWindowController = SettingsWindowController()
         }
