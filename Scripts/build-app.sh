@@ -57,7 +57,9 @@ if [ -d "$APP_NAME/Resources/Assets.xcassets" ] && [ "$(ls -A "$APP_NAME/Resourc
     xcrun actool "$APP_NAME/Resources/Assets.xcassets" \
         --compile "$APP_BUNDLE/Contents/Resources" \
         --platform macosx \
-        --minimum-deployment-target 14.0
+        --minimum-deployment-target 14.0 \
+        --app-icon AppIcon \
+        --output-partial-info-plist "$APP_BUNDLE/Contents/actool-partial.plist"
 fi
 
 # Copy remaining resources (excluding .xcassets which was compiled)
