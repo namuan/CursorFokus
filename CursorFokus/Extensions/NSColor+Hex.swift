@@ -5,8 +5,7 @@ extension NSColor {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         guard hex.count == 6 || hex.count == 8 else { return nil }
 
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
+        guard let int = UInt64(hex, radix: 16) else { return nil }
 
         let redValue: CGFloat
         let greenValue: CGFloat
