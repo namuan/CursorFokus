@@ -38,6 +38,8 @@ jobs:
             -project CursorFokus.xcodeproj \
             -scheme CursorFokus \
             -destination 'platform=macOS' \
+            -skipPackagePluginValidation \
+            -skipMacroValidation \
             -resultBundlePath TestResults
 
       - name: Upload test results
